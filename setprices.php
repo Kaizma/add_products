@@ -31,7 +31,7 @@
 
 
         //fetch everything from items table where product id is as above
-        $fetchItemsQuery = "SELECT * FROM items WHERE produt_id = '$productId'";
+        $fetchItemsQuery = "SELECT * FROM items WHERE product_id = '$productId'";
         $resultsItemData = mysqli_query($conn, $fetchItemsQuery);
         //$rowItemData = mysqli_fetch_assoc($resultsItemData);
 
@@ -58,7 +58,7 @@
                 $sizeName = $rowSizeName['size_name'];      //size
 
                 
-                $selectThemeName = "SELECT theme_name FROM thems WHERE theme_id = '$themeId'";
+                $selectThemeName = "SELECT theme_name FROM themes WHERE theme_id = '$themeId'";
                 $resultThemeName = mysqli_query($conn, $selectThemeName);
                 $rowThemeName = mysqli_fetch_assoc($resultThemeName);
                 $themeName = $rowThemeName['theme_name'];       //theme
@@ -70,24 +70,31 @@
                 echo "<td>". $themeName . "</td>";    
                 
                 echo "<td>";
-                 echo "       <form method='post' action='<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>'>";
-                        <label for="price">Product Price:</label>
-                        <input type="text" id="price" name="price" pattern="\d{1,6}(\.\d{1,2})?" title="Enter up to 6 digits and up to 2 decimal places" required>
+                
+                 echo '<form method="post" action="' . htmlspecialchars($_SERVER['PHP_SELF']) . '">';
+
+                  echo '<input type="text" id="price" name="price" pattern="\d{1,6}(\.\d{1,2})?" title="Enter up to 6 digits and up to 2 decimal places" required>';
                        
-                        <input type="submit" value="Submit">
-                        </form>
+                   echo'<input type="submit" value="Submit">';
+                    echo '</form>';
             
-                    </td>";
+                   echo'</td>';
+
+                   
             }
 
             echo "</table>";
         } else {
             echo "0 results";
         }
+    
+        ?>
+        <?php
 
 
-    ?>
+?>
+ 
 
 
-</body>
-</html>
+    </body>
+    </html>
